@@ -1,0 +1,107 @@
+#【 vhost/php.conf 】 v1.0.0
+# @Author    : heiyeluren
+# @Created   : 2017/2/6
+# @Lastmodify: 2017/2/10
+
+
+#
+# 生成PHP服务示例配置 （支持HTTP和SSL）
+#
+# 说明：SSL的证书存放在 /home/work/nginx/conf/ssl_key 目录下
+
+   
+    # 如果使用nginx的fastcgi_cache可以开启如下配置
+    # fastcgi_cache 相关主配置
+    #fastcgi_temp_path  /home/work/data/fastcgi_temp_path;
+    #fastcgi_cache_path /home/work/data/fastcgi_cache_path levels=1:2 keys_zone=cache_one:200m inactive=1d max_size=400m;
+
+    server {
+        listen 80;
+        #listen 443;
+        server_name php.heiyeluren.com;
+
+        # 目录配置
+        index  index.html index.htm index.php;
+        access_log  /home/work/nginx/logs/php.heiyeluren.com.access.log  main;
+        error_log   /home/work/nginx/logs/php.heiyeluren.com.errror.log  error;
+        root   /home/work/www;
+        
+        # SSL配置
+        #ssl on;
+        #ssl_certificate   /home/work/nginx/conf/ssl_key/www.heiyeluren.com.pem;
+        #ssl_certificate_key  /home/work/nginx/conf/ssl_key/www.heiyeluren.com.key;
+        #ssl_session_timeout 5m;
+        #ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        #ssl_ciphers AESGCM:ALL:!DH:!EXPORT:!RC4:+HIGH:!MEDIUM:!LOW:!aNULL:!eNULL;
+        #ssl_prefer_server_ciphers on;
+    
+        # 禁止爬虫配置
+        if ($http_user_agent ~* (Scrapy|Curl|HttpClient)) {
+            rewrite ^(.*)$ /index.php?v=listing&cid=360 break;
+            return 403;
+        }
+        if ( $http_user_agent ~ "FeedDemon|Indy Library|Alexa     Toolbar|AskTbFXTV|AhrefsBot|CrawlDaddy|CoolpadWebkit|Java|Feedly|UniversalFeedParser|ApacheBench|Microsoft URL Control|Swiftbot|ZmEu|oBot|jaunty|Python-urllib|lightDeckReports Bot|DigExt|HttpClient|MJ12bot|heritrix|Ezooms|ia_archiver" ) {
+            rewrite ^(.*)$ /index.php?is_guest=1 break;
+            return 403;
+        }
+        # 也可以使用包含文件的方式包含爬虫操作配置
+        # include /home/work/nginx/conf/agent_deny.conf;
+
+        # PHP脚本访问
+        location ~ [^/]\.php(/|$) {
+            # fastcgi_cache配置
+            #fastcgi_cache cache_one;
+            #fastcgi_cache_valid 200 10m;
+            #fastcgi_cache_valid 301 302 1h;
+            #fastcgi_cache_valid any 1m;
+            #fastcgi_cache_key 127.0.0.1:9000$request_uri;
+
+            #访问php-fpm配置
+            #fastcgi_pass   unix:/tmp/php-www.sock;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            include        fastcgi_params;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            fastcgi_param  PATH_INFO  $fastcgi_path_info;
+        }
+
+        # 针对首页PHP访问特殊处理
+        location ~ /index.php {
+            #fastcgi_pass   unix:/tmp/php-www.sock;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            include        fastcgi_params;
+            fastcgi_param  SCRIPT_FILENAME  $document_root/index.php;
+            fastcgi_param  PATH_INFO  $fastcgi_path_info;
+        }
+
+        #根路径各种访问策略
+        location / {
+            if ($request_uri ~* "\.(js|css|ico|gif|jpe?g|png|bmp|swf)" ) { 
+                expires 72h; 
+            }
+            if ($request_uri ~* "\.m3u8" ) { 
+                expires -1; 
+            }
+            
+            # Rewrite Rule
+            #rewrite ^/video/(\d+)\.html$ /index.php?v=baidu_play&id=$1 last;
+            #rewrite ^/m/(tuijian|jingxuan|wudui|wuqu|wudao|search|rank|recommend)(/?|/index|/index.html|.html)$ /m/index.php?m=$1 last;
+            #rewrite ^/m/(team|user|song|video|special)/([0-9]+)(/?|/index|/index.html|.html)$ /m/index.php?m=$1&id=$2 last;
+            #rewrite ^/m/(/?|index|index.html|.html)$ /m/index.php last;
+            #rewrite ^(.*)show-([0-9]+)-([0-9]+)-([0-9]+)\.html$ $1/index.php?v=show&cid=$2&id=$3&page=$4 last;
+            #rewrite ^(.*)item-([0-9]+)-([0-9]+)-([0-9]+)\.html$ $1/index.php?v=show&cid=$2&id=$3&page=$4 last;
+            #rewrite ^(.*)team/([0-9]+)/(.*)(/?|/index|/index.html|.html)$ $1/index.php?f=team&tid=$2&t=$3 last;
+            #rewrite ^(.*)team/([0-9]+)(/?|/index|/index.html|.html)$ $1/index.php?f=team&tid=$2&t=video last;
+            #rewrite ^(.*)video/([0-9]+)(/?|/index|/index.html|.html)$ $1/index.php?v=show&cid=4&id=$2 last;
+            #rewrite ^(.*)news/([0-9]+)(/?|/index|/index.html|.html)$ $1/index.php?v=show&cid=106&id=$2 last;
+            #rewrite ^(.*)news(/?|/index|/index.html|.html)$ $1/index.php?v=listing&cid=106 last;
+            #rewrite ^(.*)v([0-9]+)/([0-9]+)p([0-9]+)(/?|/index|/index.html|.html)$ $1/index.php?v=show&cid=$2&id=$3&page=$4 last;
+            #rewrite ^(.*)v([0-9]+)/([0-9]+)(/?|/index|/index.html|.html)$ $1/index.php?v=show&cid=$2&id=$3 last;                
+            #rewrite ^(.*)m([0-9]+)p([0-9]+)(/?|/index|/index.html|.html)$ $1/index.php?v=listing&cid=$2&page=$3 last;
+            #rewrite ^(.*)m([0-9]+)(/?|/index|/index.html|.html)$ $1/index.php?v=listing&cid=$2 last;
+        }
+
+        error_page 500 502 503 504 /404.html;
+        error_page 404 /404.html;
+    }
