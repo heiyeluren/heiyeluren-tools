@@ -1,0 +1,176 @@
+
+#【 my.conf.online 】 v1.0.2
+# @Author    : heiyeluren
+# @Created   : 2016/9/13
+# @Lastmodify: 2017/2/10
+
+
+#
+# 兼容MySQL 5.6/5.7版本的比较适合的配置文件 （线上环境版）
+#  
+#
+
+
+[client]
+user = work
+password = heiyeluren
+default-character-set = utf8mb4
+socket = /home/work/mysql/data/mysql.sock
+
+[mysqldump]
+quick
+max_allowed_packet = 2G
+default-character-set = utf8mb4
+
+[mysql]
+no-auto-rehash
+prompt = "\\u@\\h : \\d \\r:\\m:\\s> "
+default-character-set = utf8mb4
+show-warnings
+
+[myisamchk]
+key_buffer_size = 256K
+sort_buffer_size = 256K
+read_buffer = 256K
+write_buffer = 256K
+
+[mysqlhotcopy]
+interactive-timeout
+
+[mysqld_safe]
+user = work
+open-files-limit = 8192
+pid-file = /home/work/mysql/data/mysqld_safe.pid
+
+[mysqld]
+
+########basic settings########
+datadir = /home/work/mysql/data/
+tmpdir = /home/work/mysql/data/
+socket = /home/work/mysql/data/mysql.sock
+pid-file = /home/work/mysql/data/mysqld.pid
+server-id = 9527 
+port = 3306
+user = work
+default-storage-engine = InnoDB
+character_set_server = utf8mb4
+collation_server = utf8mb4_general_ci
+#bind_address = 10.166.224.32
+autocommit = 1
+skip_name_resolve = 1
+lower_case_table_names = 1
+max_connections = 800
+max_connect_errors = 1000
+transaction_isolation = READ-COMMITTED
+explicit_defaults_for_timestamp = 1
+interactive_timeout = 1800
+wait_timeout = 1800
+#sql_mode = "STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER"
+sql_mode = "NO_ENGINE_SUBSTITUTION"
+
+max_allowed_packet = 64M
+join_buffer_size = 128M
+tmp_table_size = 64M
+read_buffer_size = 16M
+read_rnd_buffer_size = 32M
+sort_buffer_size = 32M
+key_buffer_size = 32M
+table_open_cache = 2048
+myisam_sort_buffer_size = 128M
+thread_cache_size = 64
+query_cache_type = 0
+query_cache_size = 128M
+max_heap_table_size=64M
+
+########log settings########
+log_error = /home/work/mysql/data/mysqld-err.log
+long_query_time = 2
+slow_query_log = 1
+slow_query_log_file = /home/work/mysql/data/mysqld-slow.log
+log_queries_not_using_indexes = 1
+log_slow_admin_statements = 1
+log_slow_slave_statements = 1
+log_throttle_queries_not_using_indexes = 10
+expire_logs_days = 90
+min_examined_row_limit = 100
+
+########replication settings########
+#general_log = 0
+#general_log_file = /home/work/mysql/data/mysqld-query.log
+log-bin = /home/work/mysql/data/mysql-bin.index
+log-bin = /home/work/mysql/data/mysql-bin
+relay-log = /home/work/mysql/data/mysql-relay-bin.index
+relay-log = /home/work/mysql/data/mysql-relay-bin
+master_info_repository = TABLE
+relay_log_info_repository = TABLE
+sync_binlog = 1
+gtid_mode = off
+enforce_gtid_consistency = 1
+log_slave_updates
+binlog_format = row 
+#binlog-format=MIXED
+relay_log_recovery = 1
+binlog_gtid_simple_recovery = 1
+#skip-slave-start
+slave_skip_errors = ddl_exist_errors
+
+## 说明：如果想在Slave上忽略一个库的复制，最好不要用binlog_ignore_db这个参数，使用replicate-ignore-db = yourdb，取代之 #
+#binlog-ignore-db = mysql
+#binlog-ignore-db = sys
+#binlog-ignore-db = information_schema
+#binlog-ignore-db = performance_schema
+replicate-ignore-db = mysql
+replicate-ignore-db = sys
+replicate-ignore-db = information_schema
+replicate-ignore-db = performance_schema 
+
+########innodb settings########
+innodb_log_group_home_dir = /home/work/mysql/data
+innodb_undo_directory = /home/work/mysql/data
+innodb_data_file_path = ibdata1:1G:autoextend
+innodb_page_size = 8192
+innodb_buffer_pool_size = 6G
+innodb_buffer_pool_instances = 8
+innodb_buffer_pool_load_at_startup = 1
+innodb_buffer_pool_dump_at_shutdown = 1
+innodb_lru_scan_depth = 2000
+innodb_lock_wait_timeout = 5
+innodb_io_capacity = 4000
+innodb_io_capacity_max = 8000
+innodb_flush_method = O_DIRECT
+innodb_file_format = Barracuda
+innodb_file_format_max = Barracuda
+innodb_undo_logs = 128
+innodb_undo_tablespaces = 3
+innodb_flush_neighbors = 1
+innodb_log_file_size = 4G
+innodb_log_files_in_group = 4
+innodb_log_buffer_size = 16M
+innodb_purge_threads = 4
+innodb_large_prefix = 1
+innodb_thread_concurrency = 64
+innodb_print_all_deadlocks = 1
+innodb_strict_mode = 1
+innodb_sort_buffer_size = 64M 
+innodb_file_per_table = 1
+#innodb_use_sys_malloc=1
+
+########semi sync replication settings########
+plugin_dir=/home/work/mysql/lib/plugin
+plugin_load = "rpl_semi_sync_master=semisync_master.so;rpl_semi_sync_slave=semisync_slave.so"
+#loose_rpl_semi_sync_master_enabled = 1
+#loose_rpl_semi_sync_slave_enabled = 1
+#loose_rpl_semi_sync_master_timeout = 5000
+
+[mysqld-5.7]
+innodb_buffer_pool_dump_pct = 40
+innodb_page_cleaners = 4
+innodb_undo_log_truncate = 1
+innodb_max_undo_log_size = 2G
+innodb_purge_rseg_truncate_frequency = 128
+binlog_gtid_simple_recovery = 1
+log_timestamps = system
+transaction_write_set_extraction = MURMUR32
+show_compatibility_56 = on
+default_password_lifetime = 0
+
