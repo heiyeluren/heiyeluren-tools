@@ -1,0 +1,77 @@
+#【 vhost/static.conf 】 v1.0.0
+# @Author    : heiyeluren
+# @Created   : 2017/2/6
+# @Lastmodify: 2017/2/10
+
+    # 
+    #  生成静态资源/图片服务示例配置 （支持HTTP和SSL）
+    # 
+    # 说明：SSL的证书存放在 /home/work/nginx/conf/ssl_key 目录下
+
+
+    server {
+        listen 80;
+        #listen 443;
+        server_name static.heiyeluren.com img.heiyeluren.com;
+
+        # 目录配置
+        index       index.html index.htm index.php;
+        access_log  /home/work/nginx/logs/static.heiyeluren.com.access.log  main;
+        error_log   /home/work/nginx/logs/static.heiyeluren.com.errror.log  error;
+        root        /home/work/www;
+            
+        # SSL配置
+        #ssl on;
+        #ssl_certificate      /home/work/nginx/conf/ssl_key/www.heiyeluren.com.pem;
+        #ssl_certificate_key  /home/work/nginx/conf/ssl_key/www.heiyeluren.com.key;
+        #ssl_session_timeout  5m;
+        #ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        #ssl_ciphers AESGCM:ALL:!DH:!EXPORT:!RC4:+HIGH:!MEDIUM:!LOW:!aNULL:!eNULL;
+        #ssl_prefer_server_ciphers on;
+
+        # 禁止爬虫配置
+        if ($http_user_agent ~* (Scrapy|Curl|HttpClient)) {
+            rewrite ^(.*)$ /index.php?v=listing&cid=360 break;
+            return 403;
+        }
+        if ( $http_user_agent ~ "FeedDemon|Indy Library|Alexa Toolbar|AskTbFXTV|AhrefsBot|CrawlDaddy|CoolpadWebkit|Java|Feedly|UniversalFeedParser|ApacheBench|Microsoft URL Control|Swiftbot|ZmEu|oBot|jaunty|Python-urllib|lightDeckReports Bot|DigExt|HttpClient|MJ12bot|heritrix|Ezooms|ia_archiver" ) {
+            rewrite ^(.*)$ /index.php?is_guest=1 break;
+            return 403;
+        }
+        # 也可以使用包含文件的方式包含爬虫操作配置
+        # include /home/work/nginx/conf/agent_deny.conf;
+
+        #禁止访问目录
+        location ~* /caches/ { 
+            return 444; 
+        }
+        location ~* /(uploadfile)/.*.(php|php5|pl|py|sh|cgi)$ {
+            return 404;
+            error_page 404 /404.html;
+        }
+
+        #资源目录
+        location /resources/ {
+            if ($request_uri ~* "\.(gif|jpe?g|png)" ) {
+                expires 72h;
+            }
+            alias  /home/work/www/www/res/;
+        }
+
+        #核心路径访问（包括文件失效期等）
+        location / {
+            if ($request_uri ~* "\.(js|css|ico|gif|jpe?g|png|bmp|swf)" ) { 
+                expires 72h; 
+            }
+            if ($request_uri ~* "\.m3u8" ) { 
+                expires -1; 
+            }
+            
+            # Rewrite Rule
+            #rewrite ^/video/(\d+)\.html$ /index.php?v=baidu_play&id=$1 last;
+            #rewrite ^/m/(tuijian|jingxuan|wudui|wuqu|wudao|search|rank|recommend)(/?|/index|/index.html|.html)$ /m/index.php?m=$1 last; 
+        }
+
+        error_page 500 502 503 504 /404.html;
+        error_page 404 /404.html;
+    }
