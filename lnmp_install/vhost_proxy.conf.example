@@ -1,0 +1,93 @@
+#【 vhost/proxy.conf 】 v1.0.0
+# @Author    : heiyeluren
+# @Created   : 2017/2/6
+# @Lastmodify: 2017/2/10
+
+
+    #
+    # 生成 反向代理服务器服务 示例配置 
+    #
+
+    # 代理和缓存临时目录（CDN模式用）
+    #proxy_temp_path   /home/work/data/nginx/proxy_temp_dir;   #指定临时文件目录
+    #proxy_cache_path  /home/work/data/nginx/proxy_cache_dir levels=1:2 keys_zone=cache_zone_name:50m inactive=1d max_size=1g;  
+    ## 设置Web缓存区名称为cache_zone_name，内存缓存为50MB，自动清除1天内没有被访问的文件，硬盘缓存为1GB。##
+
+    # 定义反向代理服务器
+    upstream upstream_srv {
+        #ip_hash
+        #hash $request_uri; 
+        #hash_method crc32; 
+        server 192.168.1.101:8080 weight=10 max_fails=5 fail_timeout=10;
+        server 192.168.1.102:8080 weight=10 max_fails=5 fail_timeout=10;
+        server 192.168.1.103:8080 weight=10 backup;
+        server 192.168.1.104:8080 weight=10 down;
+    }
+
+    # 核心server配置
+    server {
+        listen         80;
+        #listen        443;
+        server_name    proxy.heiyelure.com
+    
+        # 目录配置
+        index          index.html index.htm index.php;
+        access_log     /home/work/nginx/logs/proxy.heiyeluren.com.access.log  main;
+        error_log      /home/work/nginx/logs/proxy.heiyeluren.com.errror.log  error;
+        root           /home/work/www;
+        
+        # 根目录访问都进行反向代理转到后端服务
+        location / {
+            proxy_pass                 http://upstream_srv/;
+            proxy_redirect             off;
+            proxy_set_header           Host $host;
+            proxy_set_header           X-Real-IP $remote_addr;
+            proxy_set_header           X-Forwarded-For $proxy_add_x_forwarded_for;
+
+            proxy_connect_timeout      10;
+            proxy_send_timeout         10;
+            proxy_read_timeout         10;
+            proxy_buffer_size          32k;
+            proxy_buffers              4 64k;
+            proxy_busy_buffers_size    128k;
+            proxy_temp_file_write_size 128k;
+            client_max_body_size       10m;
+            client_body_buffer_size    512k;
+            
+            #增加故障转移，如果后端的服务器返回502、504、执行超时等错误，自动将请求转发到upstream负载均衡池中的另一台服务器，实现故障转移
+            proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_404;  
+
+            # 反向代理缓存，如果需要可以开启（CDN模式用）
+            #proxy_cache               cache_zone_name;  #增加使用web缓存区cache_one
+            #proxy_cache_key           $host$uri$is_args$args;  #增加设置web缓存的key值，nginx根据key值md5哈希存储缓存
+            #proxy_cache_valid         200 304 12h;
+            #expires                   2d;
+            #proxy_ignore_headers      "Cache-Control" "Expires" "Set-Cookie";
+        }
+
+        # CDN模式那些文件不缓存直接访问（CDN模式用）
+        #location ~ .*\.(php|jsp|cgi|asp|aspx|flv|swf|xml)?$ {
+        #    proxy_set_header           Host  $host;
+        #    proxy_set_header           X-Forwarded-For  $remote_addr;
+        #    proxy_pass                 http://upstream_srv/;
+        #}
+
+        # 用于清除CDN缓存的URL （CDN模式用）
+        #location ~ /purge(/.*) {
+        #    allow                     127.0.0.1;
+        #    allow                     192.168.1.0/24;   #设置只允许指定的IP或IP段才可以清除URL缓存。
+        #    deny                      all;
+        #    proxy_cache_purge         cache_zone_name   $host$1$is_args$args;
+        #}
+
+        # 查看服务器状态（需要验证密码）
+        location /nginx-status {
+             stub_status               on;
+             access_log                on;
+             auth_basic                "NginxStatus";
+             auth_basic_user_file      /home/work/nginx/conf/htpasswd;
+        }
+
+        #error_page 500 502 503 504 /404.html;
+        #error_page 404 /404.html;
+    }
