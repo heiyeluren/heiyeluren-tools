@@ -9,10 +9,10 @@
 ## vhost server ###
 server {
     listen       80;
-    listen       443 ssl;
+    #listen       443 ssl;
 
-    ssl_certificate     /home/work/nginx/conf/ssl/server.crt;
-    ssl_certificate_key /home/work/nginx/conf/ssl/server.key;
+    #ssl_certificate     /home/work/nginx/conf/ssl/server.crt;
+    #ssl_certificate_key /home/work/nginx/conf/ssl/server.key;
 
     server_name  api.dqd.com beta-api.dqd.com test2-api.dqd.com api.dqd.lan inter-api.dqd.lan t-api.dqd.com;
     index        index.php index.html index.htm;
