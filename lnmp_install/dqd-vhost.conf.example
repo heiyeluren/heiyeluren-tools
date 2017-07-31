@@ -78,14 +78,16 @@ server {
         fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;
         include         fastcgi_params;
 
-        fastcgi_cache cache;
-        fastcgi_cache_methods  POST;
-        fastcgi_cache_valid 200 302 301 60m;
-        fastcgi_cache_valid any 1m;
-        fastcgi_cache_min_uses 1;
-        fastcgi_cache_use_stale error timeout invalid_header http_500;
-        add_header X-Cache-CFC "$upstream_cache_status - $upstream_response_time - $http_lang";
-        fastcgi_ignore_headers "Set-Cookie";
+        ## open fastcgi cache ##
+        ## warning: if open this fastcgi_cache on, php code not working. ##
+        #fastcgi_cache cache;
+        #fastcgi_cache_methods  POST;
+        #fastcgi_cache_valid 200 302 301 60m;
+        #fastcgi_cache_valid any 1m;
+        #fastcgi_cache_min_uses 1;
+        #fastcgi_cache_use_stale error timeout invalid_header http_500;
+        #add_header X-Cache-CFC "$upstream_cache_status - $upstream_response_time - $http_lang";
+        #fastcgi_ignore_headers "Set-Cookie";
     }
  
     location = /favicon.ico {
