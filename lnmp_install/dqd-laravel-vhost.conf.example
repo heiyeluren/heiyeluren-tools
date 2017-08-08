@@ -1,8 +1,8 @@
 #
-# DQD Nginx vhost config example
+# DQD Nginx vhost config example (Laravel)
 #
 # @created: 2017/7/24
-# @lastmodify: 2017/7/24
+# @lastmodify: 2017/8/8
 # @version: v1.0
 #
 
@@ -18,7 +18,7 @@ server {
     index        index.php index.html index.htm;
     access_log   /home/work/logs/nginx/api.dqd.com.access.log logstash-app;
 
-    set $root_path '/home/work/www/dqd-web/public';
+    set $root_path '/home/work/www/run/dqd-web/public';
 
     if ( $request_uri ~ ^(/app$|/about|/quiz|/data/pre_analysis|/poll|/customtag/(\d+)?$|/upgrade|/v2|/data|/search|/emoji|/users/up_comments|/activity/quiz|/version|/app/global/2/|/old/specials/|/old/columns/|/articles/\d+.html|/articles/info/|/favourites/create/|/favourites/destroy/|/app/tabs/|/tabs/hot.json|/users/quote_comments|/comments/up/|/comments/report/|/comments/|/articles/create_comment/|/articles/total_comments/|/(article|twitter|weibo|instagram)s/comments/|/(article|twitter|weibo|instagram)s/create_comment|/articles/recommend_comments/|/recommend_comments/\d+|/article/\d+.html|/share/list/article/\d+|/share/create|/share/update/\d+|/video/play|/mobile|/recommend_comments/(all|news|video)|/archive/app/click/|/app/(iphone|android)/launch_images|/users/messages/)) 
     {
