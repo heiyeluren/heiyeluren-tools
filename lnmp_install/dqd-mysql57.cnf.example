@@ -9,12 +9,12 @@
 port                                = 3306                                           # modify value
 user                                = work
 datadir                             = /home/work/data/mysql3306                      # modify value
-tmpdir                              = /home/work/data/mysql3306/tmp                  # modify value
+tmpdir                              = /home/work/data/tmp                            # modify value
 sql_mode                            = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
 character-set-server                = utf8mb4
 explicit_defaults_for_timestamp     = on
-slave-load-tmpdir                   = /home/work/data/mysql3306/tmp                  # modify value
-socket                              = /home/work/data/mysql3306/mysql.sock           # modify value
+slave-load-tmpdir                   = /home/work/data/tmp                            # modify value
+socket                              = mysql.sock                                     # modify value
 max_allowed_packet                  = 16M
 read_only                           = 0
 
@@ -52,7 +52,7 @@ max_connect_errors                  = 99999999
 
 
 # log settings
-log_timestamp                       = 1
+log_timestamps                      = 1
 long_query_time                     = 1
 slow-query-log                      = 1
 slow-query-log-file                 = slow.log
@@ -109,5 +109,5 @@ enforce-gtid-consistency            = 1
 
 [client]
 port                                = 3306                                      # modify value
-socket                              = /home/work/data/mysql3306/mysql.sock      # modify value
+socket                              = mysql.sock                                # modify value
 no-auto-rehash
