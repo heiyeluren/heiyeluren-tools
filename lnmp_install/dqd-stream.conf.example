@@ -1,0 +1,88 @@
+#
+# DQD Nginx stream config example (DDP)
+#
+# @created: 2017/8/20
+# @lastmodify: 2017/8/21
+# @version: v1.0
+#
+
+## tcp server proxy ###
+upstream backend {
+    hash $remote_addr consistent;
+    server 192.168.0.2:12345 weight=4 max_fails=3 fail_timeout=30s;
+    server backend1.example.com:12345 weight=3 max_fails=3 fail_timeout=30s;
+    server unix:/tmp/backend3 weight=3 max_fails=3 fail_timeout=30s;
+}
+server {
+    listen 12345;
+    proxy_connect_timeout 1s;
+    proxy_timeout 3s;
+    proxy_pass backend;
+}
+
+
+## udp server proxy ###
+# DNS Load Balance proxy #
+upstream dns_cluster  {
+    server 8.8.8.8:53 weight=1 max_fails=3 fail_timeout=30s;
+    server 4.4.4.4:53 weight=1 max_fails=3 fail_timeout=30s;
+}
+server {
+    listen 53 udp;
+    proxy_responses 1;
+    proxy_timeout 2s;
+    proxy_pass dns_cluster;
+}
+server {
+    listen 53 ;
+    proxy_connect_timeout 1s;
+    proxy_timeout 2s;
+    proxy_pass dns_cluster;
+}
+
+
+## mysql server proxy ##
+upstream mysql_slave {
+    hash $remote_addr consistent;
+    server 192.168.0.2:3306 weight=5 max_fails=3 fail_timeout=30s;
+    server 192.168.0.3:3306 weight=5 max_fails=3 fail_timeout=30s;
+    server 192.168.0.4:3306 weight=5 max_fails=3 fail_timeout=30s;
+}
+server {
+    listen 3306;
+    proxy_connect_timeout 1s;
+    proxy_timeout 30s;
+    proxy_pass mysql_slave;
+}
+
+## redis server proxy ##
+upstream redis_cluster {
+    #ip_hash
+    #hash $remote_addr consistent;
+    server 192.168.0.2:6379 weight=5 max_fails=3 fail_timeout=30s;
+    server 192.168.0.3:6379 weight=5 max_fails=3 fail_timeout=30s;
+    server 192.168.0.4:6379 weight=5 max_fails=3 fail_timeout=30s;
+}
+server {
+    listen 6379;
+    proxy_connect_timeout 1s;
+    proxy_timeout 5s;
+    proxy_pass redis_cluster;
+}
+
+## Live media rtmp proxy ##
+upstream rtmp {
+    server 127.0.0.1:8089;
+    server 127.0.0.2:1935;
+    server 127.0.0.3:1935;
+}
+server {
+    listen 1935;
+    proxy_timeout 20s;
+    proxy_pass rtmp;
+}
+
+
+
+
+
