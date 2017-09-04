@@ -2,7 +2,7 @@
 # DQD Nginx http upstream config example (DDP)
 #
 # @created: 2017/8/20
-# @lastmodify: 2017/8/21
+# @lastmodify: 2017/9/4
 # @version: v1.0
 #
 
@@ -48,6 +48,9 @@ server {
     if ( $request_uri ~ ".*" ) {
         proxy_cache my-cache;
         proxy_cache_valid 200;
+        #proxy_cache_lock on;
+        #proxy_cache_lock_age 5s;
+        #proxy_cache_lock_timeout 5s;
         proxy_redirect off;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
@@ -70,26 +73,52 @@ server {
 }
 
 ## Forward proxy ##
+#server {
+#    resolver 8.8.8.8;
+#    resolver_timeout 5s;
+# 
+#    listen 0.0.0.0:8080;
+# 
+#    access_log  /home/work/logs/nginx/proxy.access.log;
+#    e#rror_log   /home/work/logs/nginx/proxy.error.log;
+# 
+#    location / {
+#        proxy_pass $scheme://$host$request_uri;
+#        proxy_set_header Host $http_host;
+# 
+#        proxy_buffers 256 4k;
+#        proxy_max_temp_file_size 0; 
+#        proxy_connect_timeout 30; 
+#        proxy_cache_valid 200 302 10m;
+#        proxy_cache_valid 301 1h;
+#        proxy_cache_valid any 1m;
+#        proxy_cache_lock on;
+#        proxy_cache_lock_age 5s;
+#        proxy_cache_lock_timeout 5s;
+#    }
+#}
+
+
+
+## UDP/DNS proxy ##
+## UDP proxy feture Nginx version > 1.11.9 supoort
+upstream dns_cluster  {
+    #server 172.31.3.128:53 weight=1 max_fails=3 fail_timeout=30s;
+    #server 172.31.3.66:53 weight=1 max_fails=3 fail_timeout=30s;
+    server 4.4.4.4:53 weight=1 max_fails=3 fail_timeout=30s;
+    server 8.8.8.8:53 weight=1 max_fails=3 fail_timeout=30s;
+}
 server {
-    resolver 8.8.8.8;
-    resolver_timeout 5s;
- 
-    listen 0.0.0.0:8080;
- 
-    access_log  /home/work/logs/nginx/proxy.access.log;
-    error_log   /home/work/logs/nginx/proxy.error.log;
- 
-    location / {
-        proxy_pass $scheme://$host$request_uri;
-        proxy_set_header Host $http_host;
- 
-        proxy_buffers 256 4k;
-        proxy_max_temp_file_size 0; 
-        proxy_connect_timeout 30; 
-        proxy_cache_valid 200 302 10m;
-        proxy_cache_valid 301 1h;
-        proxy_cache_valid any 1m;
-    }
+    listen 53 udp;
+    proxy_responses 1;
+    proxy_timeout 2s;
+     proxy_pass dns_cluster;
+}
+server {
+    listen 53 ;
+    proxy_connect_timeout 1s;
+    proxy_timeout 2s;
+    proxy_pass dns_cluster;
 }
 
 
