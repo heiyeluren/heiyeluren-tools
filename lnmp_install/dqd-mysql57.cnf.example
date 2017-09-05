@@ -1,7 +1,7 @@
 # MySQL5.7 configure file. #
 # MySQL_version 5.7.18
 # Version 1.1
-# Date    2017-08-08
+# Date    2017-09-05
 
 # The MySQL server
 [mysqld]
@@ -11,7 +11,7 @@ user                                = work
 datadir                             = /home/work/data/mysql3306                      # modify value
 tmpdir                              = /home/work/data/tmp                            # modify value
 sql_mode                            = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
-character-set-server                = utf8mb4
+character-set-server                = utf8                                           # modify value
 explicit_defaults_for_timestamp     = on
 slave-load-tmpdir                   = /home/work/data/tmp                            # modify value
 socket                              = mysql.sock                                     # modify value
