@@ -2,7 +2,7 @@ lnmp install
 =============
 
 
-最后更新: 2018/3/4 v0.0.3<br />
+最后更新: 2012/3/4 v0.0.3<br />
 下载地址: <a href="http://heiyeluren.googlecode.com/files/lnmp-install-0.0.3.tar.bz2">Download</a>
 
 
