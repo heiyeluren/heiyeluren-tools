@@ -1,7 +1,9 @@
 
 ## 适合百万并发高性能单机Linux环境配置脚本 v1.0
 
-作者：黑夜路人  版本：v1.0
+* 作者：黑夜路人  版本：v1.0
+* 
+* 脚本全文下载：<a href="https://github.com/heiyeluren/heiyeluren-tools/raw/master/linux-env-init/linux-env-init.1.0.sh">linux-env-init 1.0</a>
 
 <pre>
 ## ========================================= ##
