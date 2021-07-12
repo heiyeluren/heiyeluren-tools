@@ -1,0 +1,47 @@
+#
+# heiyeluren Nginx proxy config example (DDP)
+#
+# @created: 2017/8/8
+# @lastmodify: 2017/8/8
+# @version: v1.0
+#
+
+server {
+    listen       80;
+    listen       443 ssl;
+
+    ssl_certificate     /home/work/nginx/conf/ssl/server.crt;
+    ssl_certificate_key /home/work/nginx/conf/ssl/server.key;
+
+    ## open cookie userid 
+    userid on;
+    #userid_name heiyelurenuid;
+    #userid_domain dongqiudi.com;
+    userid_name afuid;
+    userid_domain heiyeluren.com;
+    userid_path /;
+    userid_expires 365d;
+
+    server_name  api.heiyeluren.com api.heiyeluren.lan; 
+    access_log   /home/work/logs/nginx/proxy-api.heiyeluren.com.access.log nginx_proxy;
+    #access_log off ;
+
+    set $product "allfootball";
+    location / {
+        # lua anti attack 
+        access_by_lua_file /home/work/nginx/lua/anti/access.lua;
+        proxy_pass http://heiyeluren-api-servers;
+        proxy_set_header    Host            $Host; 
+        proxy_set_header    X-Real-IP       $remote_addr;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        proxy_cache cache;
+        proxy_cache_valid 1m;
+        proxy_cache_valid  200 301 302 60m;
+        proxy_ignore_headers Set-Cookie Cache-Control;
+        proxy_hide_header Cache-Control;
+        proxy_hide_header Set-Cookie;
+
+    }
+
+}

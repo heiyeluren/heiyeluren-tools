@@ -1,0 +1,102 @@
+#
+# heiyeluren Nginx http upstream config example (DDP)
+#
+# @created: 2017/8/20
+# @lastmodify: 2017/9/4
+# @version: v1.0
+#
+
+## simple http upstream proxy ##
+upstream ngx_server {
+    server 192.168.0.2:8080 weight=1;
+    server 192.168.0.3:8080 weight=1;
+}
+server {
+    listen       80;
+    server_name  example.com;
+
+    location / {
+       proxy_pass http://ngx_server; 
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   html;
+    }
+}
+
+
+## http upstream proxy ##
+upstream ngx_user { 
+    ip_hash; 
+    server 192.168.0.14:80 weight=1 max_fails=3 fail_timeout=30s;
+    server 192.168.0.15:80 weight=1 max_fails=3 fail_timeout=30s;
+}
+upstream ngx_all { 
+    ip_hash; 
+    server 192.168.0.24:80 weight=1 max_fails=3 fail_timeout=30s;
+    server 192.168.0.25:80 weight=1 max_fails=3 fail_timeout=30s;
+}
+server {
+    listen       80;
+    server_name  example.com;
+    location /user {
+        proxy_connect_timeout 1s;
+        proxy_timeout 3s;
+        proxy_pass http://ngx_user;
+    }
+    if ( $request_uri ~ ".*" ) {
+        proxy_cache my-cache;
+        proxy_cache_valid 200;
+        #proxy_cache_lock on;
+        #proxy_cache_lock_age 5s;
+        #proxy_cache_lock_timeout 5s;
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
+        proxy_max_temp_file_size 0;
+        proxy_buffer_size 4k;
+        proxy_buffers 4 32k;
+        proxy_busy_buffers_size 64k;
+        proxy_temp_file_write_size 64k;
+
+        proxy_connect_timeout 1;
+        proxy_send_timeout 3;
+        proxy_read_timeout 3;
+        proxy_timeout 10s;
+
+        proxy_pass http://ngx_all;
+        break;
+    }
+}
+
+## Forward proxy ##
+#server {
+#    resolver 8.8.8.8;
+#    resolver_timeout 5s;
+# 
+#    listen 0.0.0.0:8080;
+# 
+#    access_log  /home/work/logs/nginx/proxy.access.log;
+#    e#rror_log   /home/work/logs/nginx/proxy.error.log;
+# 
+#    location / {
+#        proxy_pass $scheme://$host$request_uri;
+#        proxy_set_header Host $http_host;
+# 
+#        proxy_buffers 256 4k;
+#        proxy_max_temp_file_size 0; 
+#        proxy_connect_timeout 30; 
+#        proxy_cache_valid 200 302 10m;
+#        proxy_cache_valid 301 1h;
+#        proxy_cache_valid any 1m;
+#        proxy_cache_lock on;
+#        proxy_cache_lock_age 5s;
+#        proxy_cache_lock_timeout 5s;
+#    }
+#}
+
+
+

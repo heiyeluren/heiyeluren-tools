@@ -1,0 +1,53 @@
+#
+# heiyeluren Nginx vhost config example (DDP)
+#
+# @created: 2017/8/8
+# @lastmodify: 2017/8/8
+# @version: v1.0
+#
+
+## vhost server ###
+server {
+    listen       80;
+    #listen       443 ssl;
+
+    #ssl_certificate     /home/work/nginx/conf/ssl/server.crt;
+    #ssl_certificate_key /home/work/nginx/conf/ssl/server.key;
+
+    server_name  api.heiyeluren.com;
+    index        index.php index.html index.htm;
+    access_log   /home/work/logs/nginx/api.heiyeluren.com.access.log logstash-app;
+
+    root '/home/work/www/run/yaf-framework-demo/webroot';
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+    location ~ .*\.(php|php5)?$ {
+        fastcgi_pass    127.0.0.1:9000;
+        fastcgi_index   index.php;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+        include         fastcgi_params;
+
+    }
+ 
+    location = /favicon.ico {
+        return 204;
+        access_log     off;
+        log_not_found  off;
+    }
+
+    location ~* .*\.(gif|jpg|jpeg|png|bmp|swf|ico)$ {
+    }
+
+    location ~* .*\.(js|css)?$ {
+        access_log   off;
+        expires      12h;
+    }
+
+    location ~* /\.ht {
+        deny  all;
+    }
+}
+

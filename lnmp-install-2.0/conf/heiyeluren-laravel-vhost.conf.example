@@ -1,0 +1,125 @@
+#
+# heiyeluren Nginx vhost config example (Laravel)
+#
+# @created: 2017/7/24
+# @lastmodify: 2017/8/8
+# @version: v1.0
+#
+
+## vhost server ###
+server {
+    listen       80;
+    #listen       443 ssl;
+
+    #ssl_certificate     /home/work/nginx/conf/ssl/server.crt;
+    #ssl_certificate_key /home/work/nginx/conf/ssl/server.key;
+
+    server_name  api.heiyeluren.com beta-api.heiyeluren.com test2-api.heiyeluren.com api.heiyeluren.lan inter-api.heiyeluren.lan t-api.heiyeluren.com;
+    index        index.php index.html index.htm;
+    access_log   /home/work/logs/nginx/api.heiyeluren.com.access.log logstash-app;
+
+    set $root_path '/home/work/www/run/heiyeluren-web/public';
+
+    if ( $request_uri ~ ^(/app$|/about|/quiz|/data/pre_analysis|/poll|/customtag/(\d+)?$|/upgrade|/v2|/data|/search|/emoji|/users/up_comments|/activity/quiz|/version|/app/global/2/|/old/specials/|/old/columns/|/articles/\d+.html|/articles/info/|/favourites/create/|/favourites/destroy/|/app/tabs/|/tabs/hot.json|/users/quote_comments|/comments/up/|/comments/report/|/comments/|/articles/create_comment/|/articles/total_comments/|/(article|twitter|weibo|instagram)s/comments/|/(article|twitter|weibo|instagram)s/create_comment|/articles/recommend_comments/|/recommend_comments/\d+|/article/\d+.html|/share/list/article/\d+|/share/create|/share/update/\d+|/video/play|/mobile|/recommend_comments/(all|news|video)|/archive/app/click/|/app/(iphone|android)/launch_images|/users/messages/)) 
+    {
+            set $root_path '/data/webapps/heiyeluren-web-new/public';
+    }
+
+    root $root_path;
+#    location /users/notify {
+#        return 200 '{"up":0,"quote":0,"mention":0,"follow":0,"message":0,"mall_message":0,"coupon":0}';
+#        add_header Content-Type application/json;
+#    }
+
+    location ~ /purge(/.*) {
+        fastcgi_cache_purge   cache   "$request_method$1$is_args$args$request_body$http_lang";
+    }
+    
+    if ($request_uri ~ ^(^/manage|^/shell|^/match/query)) {
+        return 404;
+    }
+    if ($http_referer ~* sqlmap) {
+         return 403;
+    }
+
+    location /ping {
+        return 200 'OK';
+        add_header Content-Type text/plain;
+    }
+
+    location /trace {
+        return 200 '';
+        add_header Content-Type text/plain;
+    }
+    location /app/social.json {
+        return 200 '[]';
+        add_header Content-Type application/json;
+    }
+
+    if ($http_user_agent ~ Android ) {
+        rewrite ^/data/detail/(match|program)/(\d+)$    /data/detail/android/$1/$2 redirect;
+    }
+
+    rewrite /app/andorid_2_3$       http://static.heiyeluren.com/app/apk/heiyeluren_website_3.6.2_for_2.3.apk 
+
+    redirect;
+
+    location /old/article/get_click {
+        return 200 'OK';
+        add_header Content-Type text/plain;
+    }
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+    location ~ .*\.(php|php5)?$ {
+        fastcgi_pass    127.0.0.1:9000;
+        fastcgi_index   index.php;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+        include         fastcgi_params;
+
+        ## open fastcgi cache ##
+        ## warning: if open this fastcgi_cache on, php code not working. ##
+        #fastcgi_cache cache;
+        #fastcgi_cache_methods  POST;
+        #fastcgi_cache_valid 200 302 301 60m;
+        #fastcgi_cache_valid any 1m;
+        #fastcgi_cache_min_uses 1;
+        #fastcgi_cache_use_stale error timeout invalid_header http_500;
+        #add_header X-Cache-CFC "$upstream_cache_status - $upstream_response_time - $http_lang";
+        #fastcgi_ignore_headers "Set-Cookie";
+    }
+ 
+    location = /favicon.ico {
+        return 204;
+        access_log     off;
+        log_not_found  off;
+    }
+
+    location ~* .*\.(gif|jpg|jpeg|png|bmp|swf|ico)$ {
+#        proxy_pass          127.0.0.1:9000;
+#        proxy_set_header    Host            api.heiyeluren.com;
+#        proxy_set_header    X-Real-IP       $remote_addr;
+#        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+#        proxy_redirect      off;
+
+        access_log   off;
+        expires      30d;
+    }
+
+    location ~* .*\.(js|css)?$ {
+#        proxy_pass          127.0.0.1:9000;
+#        proxy_set_header    Host            api.heiyeluren.com;
+#        proxy_set_header    X-Real-IP       $remote_addr;
+#        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+#        proxy_redirect      off;
+
+        access_log   off;
+        expires      12h;
+    }
+
+    location ~* /\.ht {
+        deny  all;
+    }
+}
+
