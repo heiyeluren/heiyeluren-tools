@@ -1,6 +1,9 @@
 
 ## 高性能 LNMP-install-2.0 说明
 
+*作者：黑夜路人  /  版本：v1.0   /  更新时间：2018年1月*
+
+
 * lnmp-install-2.0 是基于高性能为基础的，构建满足大部分 Nginx+PHP 5/7 方面所需要的web业务场景的基础运行环境。
 * 本安装必须依赖于基准环境的基础之上来进行, 所有相关账户权限目录等体系都是基于基准环境来进行的. （<a href="https://github.com/heiyeluren/heiyeluren-tools/tree/master/linux-env-init">标准高性能Linux环境参考</a>）
 * 如果有必要，按照自己情况去修改关键的安装脚本：<a href="https://github.com/heiyeluren/heiyeluren-tools/blob/master/lnmp-install-2.0/lnmp-install-2.0.sh">lnmp-install-2.0.sh </a>
