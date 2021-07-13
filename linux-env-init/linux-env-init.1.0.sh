@@ -2,7 +2,7 @@
 
 ## ========================================= ##
 # 
-#  ±ê×¼Linux»·¾³³õÊ¼»¯ÎÄµµ½Å±¾
+#  æ ‡å‡†Linuxç¯å¢ƒåˆå§‹åŒ–æ–‡æ¡£è„šæœ¬
 #
 #  @author: heiyeluren
 #  @site: https://gibhub.com/heiyeluren
@@ -13,20 +13,20 @@
 ## ========================================= ##
 
 
-#ËµÃ÷ÎÄµµ£º
+#è¯´æ˜æ–‡æ¡£ï¼š
 
-# 1.  ±¾ÊÖ²áÊÇ´øShellĞÔÖÊµÄÎÄµµ + ShellµÄ·½Ê½£¬²¿·Ö½Ú×àÊÊºÏ×Ô¼º»·¾³¿ÉÒÔÎ¢µ÷Ò»ÏÂ
-# 2.  ÎªÁË·½±ã£¬»áÄ¬ÈÏÎªÑ¡ÔñµÄÊÇCentOSÀàµÄLinuxÏµÍ³£¬°æ±¾ÊÇ 7.x ×óÓÒ
-# 3.  ÎªÁË°²È«Ä¬ÈÏ¶¼ÉèÖÃÃÜÂë£¬²Î¿¼ÃÜÂë£º
+# 1.  æœ¬æ‰‹å†Œæ˜¯å¸¦Shellæ€§è´¨çš„æ–‡æ¡£ + Shellçš„æ–¹å¼ï¼Œéƒ¨åˆ†èŠ‚å¥é€‚åˆè‡ªå·±ç¯å¢ƒå¯ä»¥å¾®è°ƒä¸€ä¸‹
+# 2.  ä¸ºäº†æ–¹ä¾¿ï¼Œä¼šé»˜è®¤ä¸ºé€‰æ‹©çš„æ˜¯CentOSç±»çš„Linuxç³»ç»Ÿï¼Œç‰ˆæœ¬æ˜¯ 7.x å·¦å³
+# 3.  ä¸ºäº†å®‰å…¨é»˜è®¤éƒ½è®¾ç½®å¯†ç ï¼Œå‚è€ƒå¯†ç ï¼š
 #
-# ÎªÁË±£Ö¤ÏµÍ³°²È«£¬½¨Òé°ÑrootÃÜÂëÉèÖÃ×ã¹»½¡×³£º´óĞ¡Ğ´×ÖÄ¸+Êı×Ö+ÌØÊâ×Ö·û£¬ÎªÁË·½±ã¼Ç£¬¿ÉÒÔÉèÖÃÒ»Ğ©ÓĞÒâÒåµÄÃÜÂë¡£(ÃüÁîpasswd root À´ĞŞ¸Ä)
-# ¾ÙÀı1£ºFlzc3000c1sy&l9t £¨·ÉÁ÷Ö±ÏÂÈıÇ§³ßÒÉÊÇÒøºÓÂä¾ÅÌì£¬&´ú±íºÍ£©
-# ¾ÙÀı2£ºYhs8jCfcys / YhsbjCfcys £¨Ò°»ğÉÕ²»¾¡´º·ç´µÓÖÉú£©
-# ¾ÙÀı3£ºC*dlxYrjn^ / Cai*dlxYourjn^ £¨²É¾Õ¶«ÀéÏÂÓÆÈ»¼ûÄÏÉ½£¬*´ú±í¾Õ£¬^´ú±íÉ½£©
-# ¾ÙÀı4£ºMhxzkyh £¨Ã·»¨Ïã×Ô¿àº®À´£¬Æ´Òô£©
+# ä¸ºäº†ä¿è¯ç³»ç»Ÿå®‰å…¨ï¼Œå»ºè®®æŠŠrootå¯†ç è®¾ç½®è¶³å¤Ÿå¥å£®ï¼šå¤§å°å†™å­—æ¯+æ•°å­—+ç‰¹æ®Šå­—ç¬¦ï¼Œä¸ºäº†æ–¹ä¾¿è®°ï¼Œå¯ä»¥è®¾ç½®ä¸€äº›æœ‰æ„ä¹‰çš„å¯†ç ã€‚(å‘½ä»¤passwd root æ¥ä¿®æ”¹)
+# ä¸¾ä¾‹1ï¼šFlzx3000c1sy&l9t ï¼ˆé£æµç›´ä¸‹ä¸‰åƒå°ºç–‘æ˜¯é“¶æ²³è½ä¹å¤©ï¼Œ&ä»£è¡¨å’Œï¼‰
+# ä¸¾ä¾‹2ï¼šYhs8jCfcys / YhsbjCfcys ï¼ˆé‡ç«çƒ§ä¸å°½æ˜¥é£å¹åˆç”Ÿï¼‰
+# ä¸¾ä¾‹3ï¼šC*dlxYrjn^ / Cai*dlxYourjn^ ï¼ˆé‡‡èŠä¸œç¯±ä¸‹æ‚ ç„¶è§å—å±±ï¼Œ*ä»£è¡¨èŠï¼Œ^ä»£è¡¨å±±ï¼‰
+# ä¸¾ä¾‹4ï¼šMhxzkyh ï¼ˆæ¢…èŠ±é¦™è‡ªè‹¦å¯’æ¥ï¼Œæ‹¼éŸ³ï¼‰
 
-# 4.  Èç¹ûĞèÒª°´ÕÕÈ«²¿»·½ÚÀ´£¬½¨ÒéÊÇ°´ÕÕÎÄµµµÄµÚÒ»²½¿ªÊ¼Öğ²½²Ù×÷µ÷Õû£¬²ÅÄÜ¹»¹¹½¨±È½ÏÓÅĞãµÄ»·¾³¡£
-# 5.  Èç¹û²¿·ÖÈí¼şÎŞ·¨ÏÂÔØ£¬»òÕßÊÇ°æ±¾ÎÊÌâ£¬½¨Òéµ¥¶ÀÏÂÔØ×öÎ¢µ÷½øĞĞµ÷Õû¡£
+# 4.  å¦‚æœéœ€è¦æŒ‰ç…§å…¨éƒ¨ç¯èŠ‚æ¥ï¼Œå»ºè®®æ˜¯æŒ‰ç…§æ–‡æ¡£çš„ç¬¬ä¸€æ­¥å¼€å§‹é€æ­¥æ“ä½œè°ƒæ•´ï¼Œæ‰èƒ½å¤Ÿæ„å»ºæ¯”è¾ƒä¼˜ç§€çš„ç¯å¢ƒã€‚
+# 5.  å¦‚æœéƒ¨åˆ†è½¯ä»¶æ— æ³•ä¸‹è½½ï¼Œæˆ–è€…æ˜¯ç‰ˆæœ¬é—®é¢˜ï¼Œå»ºè®®å•ç‹¬ä¸‹è½½åšå¾®è°ƒè¿›è¡Œè°ƒæ•´ã€‚
 
 
 
@@ -36,7 +36,7 @@
 
 ##########################################
 #
-#    ³õÊ¼»¯Linux·şÎñÆ÷
+#    åˆå§‹åŒ–LinuxæœåŠ¡å™¨
 #
 #    @version: v1.0.0
 #
@@ -44,12 +44,12 @@
 
 
 #####################
-#     ¹ÒÔØÓ²ÅÌ
+#     æŒ‚è½½ç¡¬ç›˜
 #####################
 
-# ¸ñÊ½»¯´ÅÅÌºÍ½øĞĞ¹ÒÔØ,ÈÎÒâÔ­Ê¼´ÅÅÌ¶¼±ØĞë°ÑÊı¾İÅÌ¹ÒÔØµ½ /home Ä¿Â¼ÏÂ # 
+# æ ¼å¼åŒ–ç£ç›˜å’Œè¿›è¡ŒæŒ‚è½½,ä»»æ„åŸå§‹ç£ç›˜éƒ½å¿…é¡»æŠŠæ•°æ®ç›˜æŒ‚è½½åˆ° /home ç›®å½•ä¸‹ # 
 
-## ×¢Òâ: ucloud ºÍ awsµÄĞéÄâ´ÅÅÌÂ·¾¶²»Í¬,×¢ÒâĞŞ¸Ä VDISK ±äÁ¿ ##
+## æ³¨æ„: ucloud å’Œ awsçš„è™šæ‹Ÿç£ç›˜è·¯å¾„ä¸åŒ,æ³¨æ„ä¿®æ”¹ VDISK å˜é‡ ##
 
 VDISK=/dev/vdb
 QVDISK=${VDISK//\//\\/}
@@ -61,49 +61,49 @@ echo "$VDISK  /home ext4  defaults,noatime  0  0" >> /etc/fstab
 
 
 
-# /home ÊÇÎÒÃÇºËĞÄµÄ´úÂë°²×°²¿ÊğÄ¿Â¼£¬ËùÒÔ£¬ÎÒÃÇĞèÒª°ÑºËĞÄ´ó´ÅÅÌ¹ÒÔÚµ½ /home Ä¿Â¼¡£
-# ¼ÙÉèÎÒÃÇÄ¿Ç°´ó´ÅÅÌÄ¬ÈÏ¹ÒÔÚÔÚ£º/data Ä¿Â¼ÏÂÃæ£¬Êı¾İÅÌÊÇ /dev/xvdb1£¬ÎÒÃÇĞèÒªÏÈumountÕâ¸ö¹ÒÔØ¡£
-# È¥µô¹ÒÔØ£ºumount /home/
-# ÖØĞÂ¹ÒÔØ£ºmount -t ext4 /dev/xvdb1 /home/
-# ĞèÒªÓÀ¾ÃÉúĞ§(rebootÖØÆôÒÀÈ»ÉúĞ§)£¬ĞèÒªĞŞ¸Ä /etc/fstab ÎÄ¼ş£¨ĞŞ¸ÄºóÖ±½ÓrootÈ¨ÏŞ mount -a ÉúĞ§£©£º
-# °Ñ£º    /dev/xvdb1  /data ext4    defaults    0  0
-# ĞŞ¸ÄÎª£º/dev/xvdb1  /home ext4    defaults    0  0
-# »òÖ±½Ó£ºecho "/dev/xvdb1  /home ext4    defaults    0  0" >> /etc/fstab
+# /home æ˜¯æˆ‘ä»¬æ ¸å¿ƒçš„ä»£ç å®‰è£…éƒ¨ç½²ç›®å½•ï¼Œæ‰€ä»¥ï¼Œæˆ‘ä»¬éœ€è¦æŠŠæ ¸å¿ƒå¤§ç£ç›˜æŒ‚åœ¨åˆ° /home ç›®å½•ã€‚
+# å‡è®¾æˆ‘ä»¬ç›®å‰å¤§ç£ç›˜é»˜è®¤æŒ‚åœ¨åœ¨ï¼š/data ç›®å½•ä¸‹é¢ï¼Œæ•°æ®ç›˜æ˜¯ /dev/xvdb1ï¼Œæˆ‘ä»¬éœ€è¦å…ˆumountè¿™ä¸ªæŒ‚è½½ã€‚
+# å»æ‰æŒ‚è½½ï¼šumount /home/
+# é‡æ–°æŒ‚è½½ï¼šmount -t ext4 /dev/xvdb1 /home/
+# éœ€è¦æ°¸ä¹…ç”Ÿæ•ˆ(rebooté‡å¯ä¾ç„¶ç”Ÿæ•ˆ)ï¼Œéœ€è¦ä¿®æ”¹ /etc/fstab æ–‡ä»¶ï¼ˆä¿®æ”¹åç›´æ¥rootæƒé™ mount -a ç”Ÿæ•ˆï¼‰ï¼š
+# æŠŠï¼š    /dev/xvdb1  /data ext4    defaults    0  0
+# ä¿®æ”¹ä¸ºï¼š/dev/xvdb1  /home ext4    defaults    0  0
+# æˆ–ç›´æ¥ï¼šecho "/dev/xvdb1  /home ext4    defaults    0  0" >> /etc/fstab
 
-## °¢ÀïÔÆ/ÌÚÑ¶ÔÆµÈ·şÎñÆ÷¹ÒÔØÁ÷³ÌÊÇ£º
-# (1) ¹ºÂòÔÆÅÌ
-# (2) ÔÚ·şÎñÆ÷Àï¼ÓÔØÊ¹ÓÃ 
-#     a)fdisk -l  #²é¿´ĞÂ¼ÓÈë·ÖÇø (°¢ÀïÔÆÊÇ xvdb¡¢ÌÚÑ¶ÔÆÊÇvdb)
-#     b)·ÖÇø£ºfdisk  /dev/vdb £¬¸ù¾İÌáÊ¾£¬ÒÀ´ÎÊäÈë¡°n¡±£¬¡°p¡±¡°1¡±£¬Á½´Î»Ø³µ£¬¡°wq¡±£¬·ÖÇø¾Í¿ªÊ¼ÁË£¬ºÜ¿ì¾Í»áÍê³É¡£
-#     c)²é¿´·ÖÇø½á¹û£ºÊ¹ÓÃ¡°fdisk -l¡±ÃüÁî¿ÉÒÔ¿´µ½£¬ĞÂµÄ·ÖÇø/dev/vdb1ÒÑ¾­½¨Á¢Íê³ÉÁË¡££¨×¢Òâ£º/dev/vdb1ÊÇÕë¶Ôvdb´ÅÅÌµÄ·ÖÇø1£¬»¹¿ÉÒÔÓĞ/dev/vdb2¡£¡£¡££¬/dev/vdb ÊÇÕû¸öÓ²ÅÌ£©
-#     d)¸ñÊ½»¯·ÖÇø£º mkfs.ext4 /dev/vdb1£¨Èç¹ûÒª¸ñÊ½»¯Õû¸ö´ÅÅÌ¾ÍÊÇ£ºmkfs.ext4 /dev/vdb£¬Èç¹ûĞèÒªÆäËûÎÄ¼ş¸ñÊ½¿ÉÒÔÊ¹ÓÃmkfs.ext3 µÈ.£©
-#     e)ÂíÉÏ¼ÓÔØ·ÖÇø£ºmount /dev/vdb  /home/ £¨°Ñ/dev/vdbÕû¸öÓ²ÅÌ¹ÒÔØÔÚ/homeÄ¿Â¼ÏÂ£¬Ò²¿ÉÒÔ¹ÒÔÚÒ»¸ö·ÖÇø£ºmount /dev/vdb1 /home/work£©
-#     f)ÓÀ¾Ã¹ÒÔØ£º
+## é˜¿é‡Œäº‘/è…¾è®¯äº‘ç­‰æœåŠ¡å™¨æŒ‚è½½æµç¨‹æ˜¯ï¼š
+# (1) è´­ä¹°äº‘ç›˜
+# (2) åœ¨æœåŠ¡å™¨é‡ŒåŠ è½½ä½¿ç”¨ 
+#     a)fdisk -l  #æŸ¥çœ‹æ–°åŠ å…¥åˆ†åŒº (é˜¿é‡Œäº‘æ˜¯ xvdbã€è…¾è®¯äº‘æ˜¯vdb)
+#     b)åˆ†åŒºï¼šfdisk  /dev/vdb ï¼Œæ ¹æ®æç¤ºï¼Œä¾æ¬¡è¾“å…¥â€œnâ€ï¼Œâ€œpâ€â€œ1â€ï¼Œä¸¤æ¬¡å›è½¦ï¼Œâ€œwqâ€ï¼Œåˆ†åŒºå°±å¼€å§‹äº†ï¼Œå¾ˆå¿«å°±ä¼šå®Œæˆã€‚
+#     c)æŸ¥çœ‹åˆ†åŒºç»“æœï¼šä½¿ç”¨â€œfdisk -lâ€å‘½ä»¤å¯ä»¥çœ‹åˆ°ï¼Œæ–°çš„åˆ†åŒº/dev/vdb1å·²ç»å»ºç«‹å®Œæˆäº†ã€‚ï¼ˆæ³¨æ„ï¼š/dev/vdb1æ˜¯é’ˆå¯¹vdbç£ç›˜çš„åˆ†åŒº1ï¼Œè¿˜å¯ä»¥æœ‰/dev/vdb2ã€‚ã€‚ã€‚ï¼Œ/dev/vdb æ˜¯æ•´ä¸ªç¡¬ç›˜ï¼‰
+#     d)æ ¼å¼åŒ–åˆ†åŒºï¼š mkfs.ext4 /dev/vdb1ï¼ˆå¦‚æœè¦æ ¼å¼åŒ–æ•´ä¸ªç£ç›˜å°±æ˜¯ï¼šmkfs.ext4 /dev/vdbï¼Œå¦‚æœéœ€è¦å…¶ä»–æ–‡ä»¶æ ¼å¼å¯ä»¥ä½¿ç”¨mkfs.ext3 ç­‰.ï¼‰
+#     e)é©¬ä¸ŠåŠ è½½åˆ†åŒºï¼šmount /dev/vdb  /home/ ï¼ˆæŠŠ/dev/vdbæ•´ä¸ªç¡¬ç›˜æŒ‚è½½åœ¨/homeç›®å½•ä¸‹ï¼Œä¹Ÿå¯ä»¥æŒ‚åœ¨ä¸€ä¸ªåˆ†åŒºï¼šmount /dev/vdb1 /home/workï¼‰
+#     f)æ°¸ä¹…æŒ‚è½½ï¼š
 #     echo '/dev/vdb  /home ext4    defaults    0  0' >> /etc/fstab
-#     cat /etc/fstab£¬¿´¿´ÊÇ·ñĞ´ÈëÁË£¬¿ÉÒÔÓÃ£ºmount -a È«²¿Ö´ĞĞ /etc/fstab ÖĞµÄÅäÖÃ£¬ÖØÆô·şÎñÆ÷Ğ§¹ûÀàËÆ¡£
+#     cat /etc/fstabï¼Œçœ‹çœ‹æ˜¯å¦å†™å…¥äº†ï¼Œå¯ä»¥ç”¨ï¼šmount -a å…¨éƒ¨æ‰§è¡Œ /etc/fstab ä¸­çš„é…ç½®ï¼Œé‡å¯æœåŠ¡å™¨æ•ˆæœç±»ä¼¼ã€‚
 
-## ucloud Ä¬ÈÏ»á¸øÄã¹ÒÔØºÃ,ÒòÎªÎÒÃÇ±ê×¼»·¾³ĞèÒª,ËùÒÔĞèÒª £º
+## ucloud é»˜è®¤ä¼šç»™ä½ æŒ‚è½½å¥½,å› ä¸ºæˆ‘ä»¬æ ‡å‡†ç¯å¢ƒéœ€è¦,æ‰€ä»¥éœ€è¦ ï¼š
 # unmount /data
 # mount /dev/vdb /home
 
-## aws »áĞèÒª×Ô¼º½øĞĞ¸ñÊ½»¯ºÍ mount ´ÅÅÌµ½ /home Ä¿Â¼
+## aws ä¼šéœ€è¦è‡ªå·±è¿›è¡Œæ ¼å¼åŒ–å’Œ mount ç£ç›˜åˆ° /home ç›®å½•
 
 
 
 #####################
-#  ĞŞ¸ÄrootÃÜÂë
+#  ä¿®æ”¹rootå¯†ç 
 #####################
 #
-# ÎªÁË±£Ö¤ÏµÍ³°²È«£¬½¨Òé°ÑrootÃÜÂëÉèÖÃ×ã¹»½¡×³£º´óĞ¡Ğ´×ÖÄ¸+Êı×Ö+ÌØÊâ×Ö·û£¬ÎªÁË·½±ã¼Ç£¬¿ÉÒÔÉèÖÃÒ»Ğ©ÓĞÒâÒåµÄÃÜÂë¡£(ÃüÁîpasswd root À´ĞŞ¸Ä)
-# ¾ÙÀı1£ºFlzc3000c1sy&l9t £¨·ÉÁ÷Ö±ÏÂÈıÇ§³ßÒÉÊÇÒøºÓÂä¾ÅÌì£¬&´ú±íºÍ£©
-# ¾ÙÀı2£ºYhs8jCfcys / YhsbjCfcys £¨Ò°»ğÉÕ²»¾¡´º·ç´µÓÖÉú£©
-# ¾ÙÀı3£ºC*dlxYrjn^ / Cai*dlxYourjn^ £¨²É¾Õ¶«ÀéÏÂÓÆÈ»¼ûÄÏÉ½£¬*´ú±í¾Õ£¬^´ú±íÉ½£©
+# ä¸ºäº†ä¿è¯ç³»ç»Ÿå®‰å…¨ï¼Œå»ºè®®æŠŠrootå¯†ç è®¾ç½®è¶³å¤Ÿå¥å£®ï¼šå¤§å°å†™å­—æ¯+æ•°å­—+ç‰¹æ®Šå­—ç¬¦ï¼Œä¸ºäº†æ–¹ä¾¿è®°ï¼Œå¯ä»¥è®¾ç½®ä¸€äº›æœ‰æ„ä¹‰çš„å¯†ç ã€‚(å‘½ä»¤passwd root æ¥ä¿®æ”¹)
+# ä¸¾ä¾‹1ï¼šFlzc3000c1sy&l9t ï¼ˆé£æµç›´ä¸‹ä¸‰åƒå°ºç–‘æ˜¯é“¶æ²³è½ä¹å¤©ï¼Œ&ä»£è¡¨å’Œï¼‰
+# ä¸¾ä¾‹2ï¼šYhs8jCfcys / YhsbjCfcys ï¼ˆé‡ç«çƒ§ä¸å°½æ˜¥é£å¹åˆç”Ÿï¼‰
+# ä¸¾ä¾‹3ï¼šC*dlxYrjn^ / Cai*dlxYourjn^ ï¼ˆé‡‡èŠä¸œç¯±ä¸‹æ‚ ç„¶è§å—å±±ï¼Œ*ä»£è¡¨èŠï¼Œ^ä»£è¡¨å±±ï¼‰
 
 # passwd root 
 
 
 #####################
-#  ¹Ø±Õ¶àÓàÏµÍ³·şÎñ
+#  å…³é—­å¤šä½™ç³»ç»ŸæœåŠ¡
 #####################
 for i in irqbalance.service acpid.service auditd.service kdump.service ntpd.service postfix.service ; do
     systemctl disable $i
@@ -111,38 +111,38 @@ done
 
 
 #####################
-#  LDAPÍĞ¹ÜÈ¨ÏŞĞŞ¸Ä
+#  LDAPæ‰˜ç®¡æƒé™ä¿®æ”¹
 #####################
 
 
 
 #####################
-#  ntpÊ±¼ä·şÎñÆ÷Í¬²½
+#  ntpæ—¶é—´æœåŠ¡å™¨åŒæ­¥
 #####################
 
-## ËµÃ÷£ºÒ»°ã°¢ÀïÔÆ/ÌÚÑ¶ÔÆµÈ¶¼»áÓĞ×Ô¼ºµÄntpÊ±¼ä·şÎñÆ÷£¬ÎÈÍ×Æğ¼û,ĞèÒª´î½¨×Ô¼ºµÄntp·şÎñÆ÷
+## è¯´æ˜ï¼šä¸€èˆ¬é˜¿é‡Œäº‘/è…¾è®¯äº‘ç­‰éƒ½ä¼šæœ‰è‡ªå·±çš„ntpæ—¶é—´æœåŠ¡å™¨ï¼Œç¨³å¦¥èµ·è§,éœ€è¦æ­å»ºè‡ªå·±çš„ntpæœåŠ¡å™¨
 ##
-# ntpÊ±¼ä·şÎñÆ÷ÁĞ±í£ºasia.pool.ntp.org / cn.pool.ntp.org / cn.ntp.org.cn £¬ÍÆ¼ö ntp.org ÓòÃûµÄ¿¿Æ×Ğ©
+# ntpæ—¶é—´æœåŠ¡å™¨åˆ—è¡¨ï¼šasia.pool.ntp.org / cn.pool.ntp.org / cn.ntp.org.cn ï¼Œæ¨è ntp.org åŸŸåçš„é è°±äº›
 
-# ¼ÓÈëµ½crontabÖĞ
+# åŠ å…¥åˆ°crontabä¸­
 # sudo crontab -e
 #
-# ĞÂÔöÈçÏÂÄÚÈİ£º(Ã¿¸ô15·ÖÖÓ´Óntp·şÎñÆ÷Í¬²½Ò»ÏÂÊ±¼ä)
+# æ–°å¢å¦‚ä¸‹å†…å®¹ï¼š(æ¯éš”15åˆ†é’Ÿä»ntpæœåŠ¡å™¨åŒæ­¥ä¸€ä¸‹æ—¶é—´)
 # */15 * * * * /usr/sbin/ntpdate asia.pool.ntp.org >> /var/log/ntpdate.log
 #
 
 
 
 #####################
-#  ĞŞ¸ÄsshµÇÂ½·½Ê½
+#  ä¿®æ”¹sshç™»é™†æ–¹å¼
 #####################
 #
-# ËµÃ÷: ĞŞ¸Ä³ÉÎª²ÉÓÃÃÜÔ¿·½Ê½µÇÂ¼,¹Ø±ÕÓÃ»§ÃÜÂëµÇÂ½
+# è¯´æ˜: ä¿®æ”¹æˆä¸ºé‡‡ç”¨å¯†é’¥æ–¹å¼ç™»å½•,å…³é—­ç”¨æˆ·å¯†ç ç™»é™†
 #
 
-# Ä¬ÈÏÍøÂçÉÏºÜ¶àºÚ¿ÍºÍScriptKids»áÃ»ÊÂ¾ÍÉ¨Ãè·şÎñÆ÷£¬Èç¹û·¢ÏÖ¿ª·ÅÁË22¶Ë¿ÚµÄ»á·è¿ñµÄÈ¥ÈëÇÖ£¬ÎªÁË°²È«Æğ¼û£¬¶àÒ»ÊÂ²»ÈçÊ¡Ò»ÊÂÔ­Ôò£¬ĞŞ¸ÄsshµÄ·şÎñ¶Ë¿Ú
+# é»˜è®¤ç½‘ç»œä¸Šå¾ˆå¤šé»‘å®¢å’ŒScriptKidsä¼šæ²¡äº‹å°±æ‰«ææœåŠ¡å™¨ï¼Œå¦‚æœå‘ç°å¼€æ”¾äº†22ç«¯å£çš„ä¼šç–¯ç‹‚çš„å»å…¥ä¾µï¼Œä¸ºäº†å®‰å…¨èµ·è§ï¼Œå¤šä¸€äº‹ä¸å¦‚çœä¸€äº‹åŸåˆ™ï¼Œä¿®æ”¹sshçš„æœåŠ¡ç«¯å£
 #
-# ĞŞ¸Ässh/sshd¶Ë¿ÚÎª 8822£¬¿ÉÒÔ×ÔĞĞĞŞ¸Ä
+# ä¿®æ”¹ssh/sshdç«¯å£ä¸º 8822ï¼Œå¯ä»¥è‡ªè¡Œä¿®æ”¹
 # SPORT=9922
 # sudo sed -i 's/^[ ]*Port/#    Port/' /etc/ssh/ssh_config
 #sudo sed -i 's/^Port/#Port/'         /etc/ssh/sshd_config
@@ -150,30 +150,30 @@ done
 #sudo echo "Port $SPORT"           >> /etc/ssh/sshd_config
 #unset SPORT
 
-# ÖØÆô·şÎñÉúĞ§£¨¼ÇµÃÖØĞÂµÇÂ½µÄÊ±ºòĞèÒªĞŞ¸Ässh¶Ë¿Ú£©
+# é‡å¯æœåŠ¡ç”Ÿæ•ˆï¼ˆè®°å¾—é‡æ–°ç™»é™†çš„æ—¶å€™éœ€è¦ä¿®æ”¹sshç«¯å£ï¼‰
 #service sshd restart
 #/bin/systemctl restart  sshd.service
 
 
 #####################
-#  ¸ü¸Ähostname
+#  æ›´æ”¹hostname
 #####################
 
-## ÎªÁË·½±ãÏÔÊ¾·şÎñÆ÷£¬»áĞŞ¸ÄhostnameµÄÏÔÊ¾ĞÅÏ¢£¬·½±ãÖÕ¶ËÏÂÃæÏÔÊ¾¹ÜÀí
-# hostname ´æ´¢ÔÚ /etc/hostnmae ÎÄ¼şÀï£¬Ö±½ÓĞŞ¸ÄÖØÆô¾ÍÉúĞ§À²
+## ä¸ºäº†æ–¹ä¾¿æ˜¾ç¤ºæœåŠ¡å™¨ï¼Œä¼šä¿®æ”¹hostnameçš„æ˜¾ç¤ºä¿¡æ¯ï¼Œæ–¹ä¾¿ç»ˆç«¯ä¸‹é¢æ˜¾ç¤ºç®¡ç†
+# hostname å­˜å‚¨åœ¨ /etc/hostnmae æ–‡ä»¶é‡Œï¼Œç›´æ¥ä¿®æ”¹é‡å¯å°±ç”Ÿæ•ˆå•¦
 
-## ÃüÃû¹æÔò ##
-# ÃüÃûËµÃ÷: ÒµÎñÄ£¿é-»úÆ÷ÓÃÍ¾-»úÆ÷×ÔÔöĞòÁĞºÅ.»ú·¿³ÇÊĞ.ËùÊôÔÆ·şÎñÉÌ»òËùÊô×ÔÖ÷»ú·¿Ãû³Æ.ÒµÎñËùÊôÖ÷ÓòÃû
+## å‘½åè§„åˆ™ ##
+# å‘½åè¯´æ˜: ä¸šåŠ¡æ¨¡å—-æœºå™¨ç”¨é€”-æœºå™¨è‡ªå¢åºåˆ—å·.æœºæˆ¿åŸå¸‚.æ‰€å±äº‘æœåŠ¡å•†æˆ–æ‰€å±è‡ªä¸»æœºæˆ¿åç§°.ä¸šåŠ¡æ‰€å±ä¸»åŸŸå
 #
-# Ê¾ÀıÈçÏÂ:
+# ç¤ºä¾‹å¦‚ä¸‹:
 
-# php-web00.bj.aliyun    #phpÍøÒ³00.±±¾©»ú·¿.°¢ÀïÔÆ
-# go-app01.bj.yizhuan    #goÓ¦ÓÃ01.±±¾©»ú·¿.Òà×¯»ú·¿
-# db-mysql02.tj.qcloud   #Êı¾İ¿âmysql.Ìì½ò»ú·¿.°¢ÀïÔÆ
+# php-web00.bj.aliyun    #phpç½‘é¡µ00.åŒ—äº¬æœºæˆ¿.é˜¿é‡Œäº‘
+# go-app01.bj.yizhuan    #goåº”ç”¨01.åŒ—äº¬æœºæˆ¿.äº¦åº„æœºæˆ¿
+# db-mysql02.tj.qcloud   #æ•°æ®åº“mysql.å¤©æ´¥æœºæˆ¿.é˜¿é‡Œäº‘
 # 
 
-HNAME="linux-new-env00.bj"    #±¾»úµÄ¿ÉÊ¶±ğÃû×Ö
-LIP="10.9.149.238"     #±¾»úµÄIP(Ò»°ãÊÇ°ó¶¨eth0Íø¿¨µÄIPµØÖ·)
+HNAME="linux-new-env00.bj"    #æœ¬æœºçš„å¯è¯†åˆ«åå­—
+LIP="10.9.149.238"     #æœ¬æœºçš„IP(ä¸€èˆ¬æ˜¯ç»‘å®šeth0ç½‘å¡çš„IPåœ°å€)
 
 echo $HNAME > /etc/hostname
 sed -i 's/HOSTNAME/#HOSTNAME/g ' /etc/sysconfig/network
@@ -183,10 +183,10 @@ echo "$LIP $HNAME" >> /etc/hosts
 
 
 #####################
-#  ¸ü¸ÄyumÔ´
+#  æ›´æ”¹yumæº
 #####################
 
-## Èç¹û×Ô¼º´î½¨ÁËÏà¹ØyumÔ´,ĞèÒª°Ñ /etc/yum.repos.d/ Ïà¹ØÅäÖÃĞŞ¸Ä³É×Ô¼ºµÄ,·½±ã¸ü¿ìËÙµÄ°²×°°ü #
+## å¦‚æœè‡ªå·±æ­å»ºäº†ç›¸å…³yumæº,éœ€è¦æŠŠ /etc/yum.repos.d/ ç›¸å…³é…ç½®ä¿®æ”¹æˆè‡ªå·±çš„,æ–¹ä¾¿æ›´å¿«é€Ÿçš„å®‰è£…åŒ… #
 
 
 
@@ -194,20 +194,20 @@ echo "$LIP $HNAME" >> /etc/hosts
 
 ##########################################
 #
-#    ¸ßĞÔÄÜLinux·şÎñÆ÷ÅäÖÃ½Å±¾
+#    é«˜æ€§èƒ½LinuxæœåŠ¡å™¨é…ç½®è„šæœ¬
 # 
 #   @version: v1.0.0
 #
-#   @desc: Ö´ĞĞÍê³Éºó£¬ĞèÒªÖØÆô·şÎñÆ÷
+#   @desc: æ‰§è¡Œå®Œæˆåï¼Œéœ€è¦é‡å¯æœåŠ¡å™¨
 #
 ###########################################
 
 
 #####################
-#     ÁÙÊ±ÉúĞ§
+#     ä¸´æ—¶ç”Ÿæ•ˆ
 #####################
 
-## ÍøÂç
+## ç½‘ç»œ
 sudo sysctl -w "net.core.somaxconn=2048"
 sudo sysctl -w "net.core.rmem_default=262144"
 sudo sysctl -w "net.core.wmem_default=262144"
@@ -228,20 +228,20 @@ sudo sysctl -w "net.ipv4.tcp_max_orphans=131072"
 sudo sysctl -w "net.ipv4.ip_local_port_range=1024 65535"
 
 
-## ÎÄ¼şÃèÊö·û
+## æ–‡ä»¶æè¿°ç¬¦
 sudo sysctl -w "fs.nr_open=5000000"
 sudo sysctl -w "fs.file-max=2000000"
 sudo sysctl -w "fs.inotify.max_user_watches=16384"
 
-## »º´æ
+## ç¼“å­˜
 sudo sysctl -w "vm.max_map_count=655360"
 
 
 #####################
-#     ÓÀ¾ÃÉúĞ§
+#     æ°¸ä¹…ç”Ÿæ•ˆ
 #####################
 
-## ÍøÂç
+## ç½‘ç»œ
 sudo echo "net.core.somaxconn=2048"                 >> /etc/sysctl.conf
 sudo echo "net.core.rmem_default=262144"            >> /etc/sysctl.conf
 sudo echo "net.core.wmem_default=262144"            >> /etc/sysctl.conf
@@ -262,23 +262,23 @@ sudo echo "net.ipv4.tcp_max_orphans=131072"         >> /etc/sysctl.conf
 sudo echo "net.ipv4.ip_local_port_range=1024 65535" >> /etc/sysctl.conf
 
 
-## ÎÄ¼şÃèÊö·û
+## æ–‡ä»¶æè¿°ç¬¦
 sudo echo "fs.nr_open=5000000"                      >> /etc/sysctl.conf
 sudo echo "fs.file-max=2000000"                     >> /etc/sysctl.conf
 sudo echo "fs.inotify.max_user_watches=16384"       >> /etc/sysctl.conf
 
-## »º´æ
+## ç¼“å­˜
 sudo echo "vm.max_map_count=655360"                 >> /etc/sysctl.conf
 
-## ÉúĞ§
+## ç”Ÿæ•ˆ
 sudo sysctl -p
 
 
 #####################
-#     ĞŞ¸ÄÓ²ÏŞÖÆ
+#     ä¿®æ”¹ç¡¬é™åˆ¶
 #####################
 
-## ĞŞ¸Älimits.conf£¬ÕâÑù¿ÉÒÔÓÀ¾ÃÉúĞ§ÏŞÖÆ
+## ä¿®æ”¹limits.confï¼Œè¿™æ ·å¯ä»¥æ°¸ä¹…ç”Ÿæ•ˆé™åˆ¶
 
 cd /etc/security/limits.d && for file in  `ls`; do mv $file $file.bak; done
 
@@ -303,8 +303,8 @@ sudo echo "*      soft  core    unlimited" >> /etc/security/limits.conf
 sudo echo "*      hard  core    unlimited" >> /etc/security/limits.conf
 
 
-## ¸øµÇÂ½sessionÅäÖÃÎÄ¼şÔö¼ÓÏŞÖÆ
-## Ôö¼ÓÈ«¾ÖÃ¿¸öÓÃ»§µÇÂ½ºóµÄÏŞÖÆ(100w)£¬ĞèÒª×ÔĞĞÖ´ĞĞulimitĞŞ¸Ä
+## ç»™ç™»é™†sessioné…ç½®æ–‡ä»¶å¢åŠ é™åˆ¶
+## å¢åŠ å…¨å±€æ¯ä¸ªç”¨æˆ·ç™»é™†åçš„é™åˆ¶(100w)ï¼Œéœ€è¦è‡ªè¡Œæ‰§è¡Œulimitä¿®æ”¹
 # sed -i 's/^ulimit/#ulimit/'     /etc/bashrc
 # echo "ulimit -n 1000001"     >> /etc/bashrc
 # echo "ulimit -u 10240"       >> /etc/bashrc
@@ -323,35 +323,35 @@ sudo echo "ulimit -c unlimited"   >> /etc/profile
 
 ##########################################
 #
-#    °²×°Linux»ù±¾Èí¼şºÍÒÀÀµ¿â
+#    å®‰è£…LinuxåŸºæœ¬è½¯ä»¶å’Œä¾èµ–åº“
 # 
 #   @author: heiyeluren
 #   @created: 2017/3/21
 #   @lasttime: 2017/3/21
 #   @version: v1.0.3
 #
-#   @desc: Ö´ĞĞÍê³Éºó£¬½¨ÒéÖØÆô·şÎñÆ÷
+#   @desc: æ‰§è¡Œå®Œæˆåï¼Œå»ºè®®é‡å¯æœåŠ¡å™¨
 #
 ###########################################
 
-# 1. °²×°»ù±¾µÄÏµÍ³Ö§³Ö¿âºÍ°²È«Éı¼¶
+# 1. å®‰è£…åŸºæœ¬çš„ç³»ç»Ÿæ”¯æŒåº“å’Œå®‰å…¨å‡çº§
 
 if [ $USER != "root" ]; then  su root; fi
 
-# ÏµÍ³°²È«Éı¼¶
+# ç³»ç»Ÿå®‰å…¨å‡çº§
 sudo yum -y install yum-security
 sudo yum -y --security check-update
 sudo yum -y update --security
 
-## °²×°»ù±¾ÃüÁîºÍ°üÒÀÀµ (±ØĞë°²×°) ##
+## å®‰è£…åŸºæœ¬å‘½ä»¤å’ŒåŒ…ä¾èµ– (å¿…é¡»å®‰è£…) ##
 sudo yum -y install epel-release
 sudo yum -y update
 
 sudo yum -y install gcc gcc-c++ gdb make cmake automake autoconf nasm libtool imake binutils flex bison telnet wget curl libcurl libcurl-devel zip unzip gzip unzip bzip2 screen iftop iotop sysbench nload iperf iptraf mpfr tcpdump dstat mtr iptraf* strace sysstat htop gmp bzip2-devel gmp-devel glibc libgomp libmudflap ncurses ncurses-libs ncurses-devel boost boost-devel libgsasl libgsasl-devel cyrus-sasl* jemalloc jemalloc-devel gperf gperftools-libs gperftools-devel systemtap-sdt-devel openssl openssl-devel pcre-devel libevent libevent-devel libev libev-devel libuv libuv-devel libuv-static libgcrypt libgcrypt-devel libpng libpng-devel libjpeg-turbo libjpeg-turbo-devel openjpeg openjpeg-devel openjpeg-libs giflib giflib-devel giflib-utils gd gd-devel ImageMagick ImageMagick-devel ImageMagick-c++ ImageMagick-c++-devel GraphicsMagick GraphicsMagick-devel GraphicsMagick-c++ GraphicsMagick-c++-devel gettext gettext-devel freetype freetype-devel libtiff libtiff-devel libwebp libwebp-devel libwebp-tools libxml2 libxml2-devel libxslt libxslt-devel libuuid libmemcached libmemcached-devel libuuid-devel expat expat-devel  expat-static boost boost-devel leveldb-devel leveldb gdbm-devel gdbm sqlite-devel sqlite sqlite2 sqlite2-devel postgresql-devel postgresql-libs GeoIP-update GeoIP GeoIP-devel GeoIP-data snappy snappy-devel csnappy csnappy-devel librabbitmq librabbitmq-tools librabbitmq-devel libffi libffi-devel lz4 lz4-devel lz4-static lzo lzo-devel lzma-sdk457 lzma-sdk457-devel zstd libzstd libzstd-devel zlib-devel zlib-static libzip libzip-devel lrzip lrzip-libs lrzip-static p7zip xz xz-devel xz-compat-libs python python-pip python-devel perl perl-devel vim git subversion subversion-devel libdb libdb-cxx libdb-devel libdb-cxx-devel libdb4 libdb4-cxx libdb4-devel libdb4-cxx-devel libtool-ltdl libtool-ltdl-devel ntpdate psmisc lrzsz lsof bind-util* doxygen supervisor libnghttp2 libnghttp2-devel nghttp2 hiredis-devel hiredis mariadb* libsodium libsodium-devel nacl nacl-devel  nacl-static libunwind libunwind-devel tree java-1.8.0-openjdk java-1.8.0-openjdk-devel java-1.8.0-openjdk-headless java-1.8.0-openjdk-accessibility  java-1.8.0-openjdk-demo ruby ruby-devel ruby-libs zbar zbar-devel protobuf protobuf-static protobuf-devel glog glog-devel  axel  graphviz graphviz-devel graphviz-gd
 
 
-## °²×° fastdfs ¿âÒÀÀµ ##
-## # ×¢Òâ:±¾¿âÒòÎª×ÔÉí½á¹¹´úÂëÔ­Òò£¬±ØĞë²ÉÓÃ£ò£ï£ï£ôÕË»§°²×°£¬ÕâÀïÌØ±ğ¹Ø×¢Ò»ÏÂ ##
+## å®‰è£… fastdfs åº“ä¾èµ– ##
+## # æ³¨æ„:æœ¬åº“å› ä¸ºè‡ªèº«ç»“æ„ä»£ç åŸå› ï¼Œå¿…é¡»é‡‡ç”¨ï½’ï½ï½ï½”è´¦æˆ·å®‰è£…ï¼Œè¿™é‡Œç‰¹åˆ«å…³æ³¨ä¸€ä¸‹ ##
 cd /tmp && if [ ! -f fastdfs-5.08.zip ]; then  wget https://github.com/happyfish100/fastdfs/archive/V5.08.zip && mv V5.08.zip fastdfs-5.08.zip; fi
 cd /tmp && if [ ! -f libfastcommon-1.0.35.zip ]; then wget https://github.com/happyfish100/libfastcommon/archive/V1.0.35.zip && mv V1.0.35.zip libfastcommon-1.0.35.zip; fi
 cd /tmp && unzip -o libfastcommon-1.0.35.zip && cd libfastcommon-1.0.35
@@ -364,10 +364,10 @@ cd .. && rm -rf fastdfs-5.08
 
 
 
-## °²×°¿ª·¢ÔËĞĞ»·¾³Ïà¹Ø±àÒëÓïÑÔºÍ¹¤¾ß£¨¿ÉÑ¡£¬ÍÆ¼ö°²×°£© ##
+## å®‰è£…å¼€å‘è¿è¡Œç¯å¢ƒç›¸å…³ç¼–è¯‘è¯­è¨€å’Œå·¥å…·ï¼ˆå¯é€‰ï¼Œæ¨èå®‰è£…ï¼‰ ##
 # sudo yum -y install golang  golang-docs nodejs luajit luajit-devel lua-static;
 
-## Õë¶ÔMySQL/Mongo/Redis/PostgreSQL»úÆ÷¿ÉÒÔ°²×°Ïà¹Ø¹¤¾ß(¿ÉÑ¡,ÍÆ¼ö°²×°) ##
+## é’ˆå¯¹MySQL/Mongo/Redis/PostgreSQLæœºå™¨å¯ä»¥å®‰è£…ç›¸å…³å·¥å…·(å¯é€‰,æ¨èå®‰è£…) ##
 # sudo yum -y install mytop innotop percona-xtrabackup* holland-xtrabackup sysbench mariadb* redis mongodb mongodb-mms-backup-agent mongodb-mms-monitoring-agent mongodb-server mongodb-test postgresql postgresql-devel postgresql-pgpool* postgresql-server postgresql-test postgresql-upgrade
 # sudo yum -y install perl perl-devel perl-DBI perl-DBD-MySQL perl-Time-HiRes perl-IO-Socket-SSL perl-TermReadKey perl-Digest-MD5 perl-Digest-Perl-MD5 perl-Digest-MD5-File python-redis perl-Redis python-pymongo postgresql-pl*
 # cd /tmp
@@ -380,23 +380,23 @@ cd .. && rm -rf fastdfs-5.08
 
 
 
-## Õë¶ÔRHEL 7.x+ÏµÍ³µÄÌØÊâ°üÇø±ğ
+## é’ˆå¯¹RHEL 7.x+ç³»ç»Ÿçš„ç‰¹æ®ŠåŒ…åŒºåˆ«
 if [ `uname -r | grep -i el7` == "" ]; then 
-  ## ×¢Òâ£ºÈç¹ûÊÇCentOS/RHEL 7.0+ÏµÍ³£¬Èç¹ûĞèÒª°²×°ÈçÏÂ¼¸¸ö°ü£¬ĞèÒªÊ¹ÓÃÈçÏÂÖ¸Áî£º£¨·ñÔò»á±¨´í£ºError: Protected multilib versions: xxxxx£© ##
-  ## Ò²¿ÉÒÔÖ´ĞĞ£ºpackage-cleanup --cleandupes  °Ñ¾É°æ±¾°üĞ¶ÔØºóÔÙÖ´ĞĞÉÏÃæµÄyum °²×°ÃüÁî ## 
-  ## ÔÚ RHEL/CentOS 7.x+°æ±¾Õâ¼¸¸öÈí¼ş»á±¨´í£ºlibstdc++/pcre/zlib/xz-libs  ##
-  ## Ïà¹Ø°ü°²×°Ö¸Áî£º
+  ## æ³¨æ„ï¼šå¦‚æœæ˜¯CentOS/RHEL 7.0+ç³»ç»Ÿï¼Œå¦‚æœéœ€è¦å®‰è£…å¦‚ä¸‹å‡ ä¸ªåŒ…ï¼Œéœ€è¦ä½¿ç”¨å¦‚ä¸‹æŒ‡ä»¤ï¼šï¼ˆå¦åˆ™ä¼šæŠ¥é”™ï¼šError: Protected multilib versions: xxxxxï¼‰ ##
+  ## ä¹Ÿå¯ä»¥æ‰§è¡Œï¼špackage-cleanup --cleandupes  æŠŠæ—§ç‰ˆæœ¬åŒ…å¸è½½åå†æ‰§è¡Œä¸Šé¢çš„yum å®‰è£…å‘½ä»¤ ## 
+  ## åœ¨ RHEL/CentOS 7.x+ç‰ˆæœ¬è¿™å‡ ä¸ªè½¯ä»¶ä¼šæŠ¥é”™ï¼šlibstdc++/pcre/zlib/xz-libs  ##
+  ## ç›¸å…³åŒ…å®‰è£…æŒ‡ä»¤ï¼š
   ## yum -y install libstdc++ pcre zlib xz-libs --setopt=protected_multilib=false
   ##
 fi;
 
 
 
-# 2. ´´½¨ÓÃ»§ºÍÄ¿Â¼ (±¾²¿·Ö¿ÉÒÔÍĞ¹Üµ½LDAP,Ò²¿ÉÒÔÖ±½Ó´´½¨)
+# 2. åˆ›å»ºç”¨æˆ·å’Œç›®å½• (æœ¬éƒ¨åˆ†å¯ä»¥æ‰˜ç®¡åˆ°LDAP,ä¹Ÿå¯ä»¥ç›´æ¥åˆ›å»º)
 if [ $USER != "root" ]; then  su root; fi
 mkdir -pv /home/coresave
 
-#´´½¨ÕË»§ºÍÖ÷Ä¿Â¼
+#åˆ›å»ºè´¦æˆ·å’Œä¸»ç›®å½•
 groupadd  work -g 500 ; useradd work -u 500 -g 500 -d /home/work  # -p Flzc3000c1sy&l9t
 groupadd  rd   -g 501 ; useradd rd   -u 501 -g 501 -d /home/rd  # -p YhsbjCfcys
 
@@ -410,20 +410,20 @@ chmod 755 /home/work/  /home/rd /home/coresave
 chown 500.500 /home/work -R
 
 
-## ËµÃ÷:ÆäËûÄ¿Â¼°´ÕÕ×Ô¼º×é¼ş°²×°ĞèÇóÔÙ´´½¨ ##
+## è¯´æ˜:å…¶ä»–ç›®å½•æŒ‰ç…§è‡ªå·±ç»„ä»¶å®‰è£…éœ€æ±‚å†åˆ›å»º ##
 
 
 
 ##########################################
 #
-#    »ù´¡ÔËÎ¬¹¤¾ß²¿Êğ
+#    åŸºç¡€è¿ç»´å·¥å…·éƒ¨ç½²
 #
 ##########################################
 
 
-# ¼à¿Ø¹¤¾ß
-# ÔËÎ¬¹¤¾ß
-# ÉÏÏß¹¤¾ß
+# ç›‘æ§å·¥å…·
+# è¿ç»´å·¥å…·
+# ä¸Šçº¿å·¥å…·
 
 
 
@@ -431,7 +431,7 @@ chown 500.500 /home/work -R
 
 ##########################################
 #
-#   @desc: Ö´ĞĞÍê³Éºó£¬ĞèÒªÖØÆô·şÎñÆ÷
+#   @desc: æ‰§è¡Œå®Œæˆåï¼Œéœ€è¦é‡å¯æœåŠ¡å™¨
 #
 ##########################################
 
